@@ -16,8 +16,15 @@
   <div class="row">
     <div class="col-12 col-md-8">
       {{ .Content }}
-      <ul>        <li><strong>Email: </strong><a href="mailto:{{ .Site.Data.contact.email }}">
+      <ul>        
+        {{ if .Site.Data.contact.linkedIn }}
+        <li style="white-space: pre-wrap;"><a href="{{ .Site.Data.contact.linkedIn }}"><strong>LinkedIn</strong></a></li>
+        {{ end }}
+        <li><strong>Email: </strong><a href="mailto:{{ .Site.Data.contact.email }}">
             {{ .Site.Data.contact.email }}</a></li>
+            {{ if .Site.Data.contact.phone }}
+            <li style="white-space: pre-wrap;"><strong>Phone: </strong><a href="tel:{{ .Site.Data.contact.phone }}">{{ .Site.Data.contact.phone }}</a></li>
+            {{ end }}
         {{ if .Site.Data.contact.address }}
         <li style="white-space: pre-wrap;"><strong>Address: </strong>{{ .Site.Data.contact.address }}</li>
         {{ end }}
